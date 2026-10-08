@@ -11,7 +11,7 @@ export interface ContactInfo {
 
 // PLACEHOLDER
 export const contactInfo: ContactInfo = {
-  email: 'hello@example.com',
+  email: 'ashu10tripathi@gmail.com',
   linkedin: {
     label: 'linkedin.com/in/ashutoshtripathi10',
     url: 'https://www.linkedin.com/in/ashutoshtripathi10/',
