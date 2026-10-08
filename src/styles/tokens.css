@@ -1,0 +1,14 @@
+:root {
+  --paper: #d4d0bc;
+  --paper-hi: #e1decd;
+  --ink: #38362c;
+  --ink-soft: #54513e;
+  --line: rgba(56, 54, 44, 0.34);
+  --line-soft: rgba(56, 54, 44, 0.16);
+  --ok: #5f6a41;
+
+  --font-display: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --gutter: 16px;
+}

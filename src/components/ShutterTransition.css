@@ -1,0 +1,56 @@
+.shutter {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: all;
+}
+
+.shutter__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 33.334vh;
+  background: var(--ink);
+}
+
+.shutter__bar--0 { top: 0; }
+.shutter__bar--1 { top: 33.334vh; }
+.shutter__bar--2 { top: 66.667vh; }
+
+.shutter__bar--enter {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: shutter-in 0.3s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.shutter__bar--0.shutter__bar--enter { animation-delay: 0ms; }
+.shutter__bar--1.shutter__bar--enter { animation-delay: 50ms; }
+.shutter__bar--2.shutter__bar--enter { animation-delay: 100ms; }
+
+.shutter__bar--hold {
+  transform: scaleX(1);
+}
+
+.shutter__bar--exit {
+  transform: scaleX(1);
+  transform-origin: right;
+  animation: shutter-out 0.3s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.shutter__bar--0.shutter__bar--exit { animation-delay: 0ms; }
+.shutter__bar--1.shutter__bar--exit { animation-delay: 50ms; }
+.shutter__bar--2.shutter__bar--exit { animation-delay: 100ms; }
+
+@keyframes shutter-in {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes shutter-out {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shutter { display: none; }
+}

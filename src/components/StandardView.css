@@ -1,0 +1,128 @@
+.standard {
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+.standard__header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.standard__header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.standard__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.standard__nav a {
+  font-size: 11px;
+  transition: color 0.15s;
+}
+
+.standard__nav a:hover {
+  color: var(--ink);
+}
+
+.standard__main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px var(--gutter);
+}
+
+.standard__hero {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.standard__name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 48px;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.standard__role {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.standard__tagline {
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+
+.standard__section {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.standard__section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.standard__project {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.standard__skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.standard__skills-grid ul {
+  list-style: disc;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.standard__timeline-entry {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.standard__footer {
+  padding: 20px var(--gutter);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .standard__nav {
+    display: none;
+  }
+
+  .standard__skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .standard__name {
+    font-size: 32px;
+  }
+}

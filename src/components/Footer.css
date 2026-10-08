@@ -1,0 +1,38 @@
+.site-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--gutter);
+  background: var(--paper);
+}
+
+.site-footer__left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-footer__dot {
+  width: 7px;
+  height: 7px;
+  background: var(--ok);
+  display: inline-block;
+}
+
+.site-footer__right {
+  font-size: 10px;
+  text-align: right;
+  max-width: 50%;
+}
+
+@media (max-width: 560px) {
+  .site-footer__right {
+    max-width: 60%;
+    font-size: 9px;
+  }
+}

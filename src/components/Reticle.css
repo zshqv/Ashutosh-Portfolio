@@ -1,0 +1,24 @@
+.reticle {
+  position: fixed;
+  bottom: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  animation: reticle-spin 180s linear infinite;
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes reticle-spin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reticle {
+    animation: none;
+    transition: none;
+  }
+}
