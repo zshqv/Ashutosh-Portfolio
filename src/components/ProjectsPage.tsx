@@ -208,14 +208,14 @@ export function ProjectsPage() {
                       <div className="projects-table__name">
                         <strong>{p.name}</strong>
                         <span className="projects-table__desc">{p.description}</span>
-                        {p.pdfLink && (
+                        {p.fileLink && (
                           <a
-                            href={p.pdfLink}
+                            href={p.fileLink}
                             target="_blank"
                             rel="noopener"
                             className="projects-table__pdf mono-label"
                           >
-                            Read PDF &#8599;
+                            {p.fileLink.endsWith('.pdf') ? 'Read PDF' : 'Download'} &#8599;
                           </a>
                         )}
                       </div>

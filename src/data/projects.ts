@@ -4,7 +4,7 @@ export interface Project {
   area: string;
   tools: string;
   year: string;
-  pdfLink?: string;
+  fileLink?: string;
 }
 
 export interface ProjectCategory {
@@ -20,25 +20,20 @@ export const projectCategories: ProjectCategory[] = [
     label: 'Financial Models',
     projects: [
       {
-        name: 'DCF & Three-Statement Model',
-        description: 'End-to-end discounted cash flow model linked to income statement, balance sheet, and cash flow.',
-        area: 'Valuation',
-        tools: 'Excel, VBA',
-        year: '2025',
-      },
-      {
-        name: 'LBO Model — Mid-Cap Industrials',
-        description: 'Leveraged buyout model with debt scheduling, IRR sensitivity tables, and multiple exit scenarios.',
+        name: 'Spotify LBO Model',
+        description: 'Full take-private LBO model for Spotify with integrated financial statements, 7-year debt schedule, returns sensitivities, and IC analysis. Includes scenario toggles (base/upside/downside), operating build by segment, and an interview brief sheet.',
         area: 'Private Equity',
         tools: 'Excel',
-        year: '2025',
+        year: '2026',
+        fileLink: '/models/Spotify_LBO_Model.xlsx',
       },
       {
-        name: 'Merger Model (Accretion / Dilution)',
-        description: 'Combined entity model testing deal synergies, purchase price allocation, and EPS impact.',
-        area: 'M&A',
-        tools: 'Excel, VBA',
-        year: '2024',
+        name: 'Vodafone Restructuring Model',
+        description: 'Distressed restructuring model featuring a 13-week cash flow liquidity test, capital structure waterfall, restructuring projections, and a liquidation waterfall analysis with full reconciliation and logic mapping.',
+        area: 'Restructuring',
+        tools: 'Excel',
+        year: '2026',
+        fileLink: '/models/Vodaphone Restructuring model.xlsx',
       },
     ],
   },
@@ -92,7 +87,7 @@ export const projectCategories: ProjectCategory[] = [
         area: 'Banking & Macro',
         tools: 'Qualitative case study',
         year: '2025',
-        pdfLink: '/papers/Zombie_Banks_and_Japans_Lost_Decade.pdf',
+        fileLink: '/papers/Zombie_Banks_and_Japans_Lost_Decade.pdf',
       },
       {
         name: 'When the Licence Becomes the Liability: IP Inversion in Licensing',
@@ -100,7 +95,7 @@ export const projectCategories: ProjectCategory[] = [
         area: 'IP & M&A Strategy',
         tools: 'Qualitative case study',
         year: '2026',
-        pdfLink: '/papers/Tripathi_IP_Inversion_Paper_Final.pdf',
+        fileLink: '/papers/Tripathi_IP_Inversion_Paper_Final.pdf',
       },
     ],
   },
