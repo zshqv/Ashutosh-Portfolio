@@ -5,39 +5,39 @@ export function AboutPage() {
   return (
     <SectionLayout index="03" title="About" lede="Behind the interface.">
       <div className="about-content">
-        {/* PLACEHOLDER */}
         <p className="about-content__text">
-          I work at the intersection of finance and technology, applying quantitative
-          methods and machine learning to problems in valuation, risk, and market analysis.
-          My aim is to make complex analysis accessible and actionable.
+          Graduated from St. Xavier's, Mumbai with no grand plan — drifted through
+          college, worked three places, and realised I was meant for finance, not
+          anything else. Non-tech background, self-taught in code and financial
+          modelling — everything on this site I built or figured out myself.
+          Currently hoping for a job in finance that I can commit to for the rest
+          of my life.
         </p>
         <p className="about-content__text">
-          This portfolio is a record of selected projects and thinking. The interface
-          draws inspiration from games I play — the visual language of NieR: Automata's
-          menus, specifically — adapted for a professional context. The "Standard view"
-          button in the top bar gives a conventional, single-page layout.
+          I also enjoy publishing research papers — currently wrote 2 papers and
+          in plan of publishing 1 more by the end of this year. Outside of work,
+          I tryhard at games with no real-world outcome whatsoever, hit 1100 rating
+          in chess after three months, and I'm currently learning to crochet and
+          speak German. I also enjoy lifting heavy weights. I pick up hobbies in a
+          very non-casual way and obsess over things that are completely insignificant.
         </p>
 
         <div className="ruled-list" style={{ marginTop: 24 }}>
           <div className="ruled-row">
             <span className="ruled-row__label">Based in</span>
-            {/* PLACEHOLDER */}
-            <span className="ruled-row__value">India</span>
+            <span className="ruled-row__value">Mumbai, India</span>
           </div>
           <div className="ruled-row">
             <span className="ruled-row__label">Focus</span>
-            {/* PLACEHOLDER */}
-            <span className="ruled-row__value">Finance, Applied AI</span>
+            <span className="ruled-row__value">Finance, Financial Modelling</span>
           </div>
           <div className="ruled-row">
             <span className="ruled-row__label">Languages</span>
-            {/* PLACEHOLDER */}
-            <span className="ruled-row__value">English, Hindi</span>
+            <span className="ruled-row__value">English, Hindi, German (learning)</span>
           </div>
           <div className="ruled-row">
             <span className="ruled-row__label">Outside work</span>
-            {/* PLACEHOLDER */}
-            <span className="ruled-row__value">Gaming, reading, running</span>
+            <span className="ruled-row__value">Gaming, lifting, chess, crochet</span>
           </div>
         </div>
       </div>
