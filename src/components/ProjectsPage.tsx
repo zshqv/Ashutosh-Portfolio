@@ -3,12 +3,25 @@ import { SectionLayout } from './SectionLayout';
 import { projectCategories } from '../data/projects';
 import './ProjectsPage.css';
 
+const LOADER_ITEMS = [
+  'Loading financial models',
+  'Loading open source',
+  'Loading Claude skills',
+  'Loading research papers',
+  'Loading quant research',
+];
+
 export function ProjectsPage() {
   const [activeTab, setActiveTab] = useState(0);
   const active = projectCategories[activeTab];
 
   return (
-    <SectionLayout index="01" title="Projects" lede="Selected work across valuation, risk, and applied AI.">
+    <SectionLayout
+      index="01"
+      title="Projects"
+      lede="Selected work across valuation, risk, and applied AI."
+      loaderItems={LOADER_ITEMS}
+    >
       <div className="projects">
         <nav className="projects-tabs" role="tablist" aria-label="Project categories">
           {projectCategories.map((cat, i) => (

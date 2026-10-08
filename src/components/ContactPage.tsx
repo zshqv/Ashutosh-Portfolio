@@ -23,7 +23,15 @@ export function ContactPage() {
   };
 
   return (
-    <SectionLayout index="05" title="Contact" lede="Get in touch.">
+    <SectionLayout
+      index="05"
+      title="Contact"
+      lede="Get in touch."
+      loaderItems={[
+        'Loading contact channels',
+        'Verifying availability',
+      ]}
+    >
       <div className="ruled-list">
         <div className="ruled-row">
           <span className="ruled-row__label">Email</span>

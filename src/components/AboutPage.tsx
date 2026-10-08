@@ -3,7 +3,16 @@ import './AboutPage.css';
 
 export function AboutPage() {
   return (
-    <SectionLayout index="03" title="About" lede="Behind the interface.">
+    <SectionLayout
+      index="03"
+      title="About"
+      lede="Behind the interface."
+      loaderItems={[
+        'Loading profile',
+        'Loading background',
+        'Loading interests',
+      ]}
+    >
       <div className="about-content">
         {/* PLACEHOLDER */}
         <p className="about-content__text">

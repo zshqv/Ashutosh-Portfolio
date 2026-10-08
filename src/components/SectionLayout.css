@@ -90,6 +90,35 @@
   line-height: 1.5;
 }
 
+.section__loader-wrap {
+  padding: 0 clamp(16px, 4vw, 80px);
+  display: flex;
+  align-items: flex-start;
+  min-height: 40vh;
+  padding-top: 40px;
+}
+
+.section__body--entered {
+  animation: section-fade-in 0.4s ease both;
+}
+
+@keyframes section-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section__body--entered {
+    animation: none;
+  }
+}
+
 @media (max-width: 820px) {
   .section__body {
     grid-template-columns: 1fr;

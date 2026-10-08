@@ -4,7 +4,16 @@ import './ResumePage.css';
 
 export function ResumePage() {
   return (
-    <SectionLayout index="04" title="Resume" lede="Experience and education.">
+    <SectionLayout
+      index="04"
+      title="Resume"
+      lede="Experience and education."
+      loaderItems={[
+        'Loading experience',
+        'Loading education',
+        'Syncing credentials',
+      ]}
+    >
       <div className="resume">
         <section aria-labelledby="resume-experience">
           <h3 className="mono-label resume__section-title" id="resume-experience">Experience</h3>

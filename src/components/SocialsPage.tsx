@@ -3,7 +3,15 @@ import { socialLinks } from '../data/socials';
 
 export function SocialsPage() {
   return (
-    <SectionLayout index="06" title="Socials" lede="Elsewhere online.">
+    <SectionLayout
+      index="06"
+      title="Socials"
+      lede="Elsewhere online."
+      loaderItems={[
+        'Loading social profiles',
+        'Resolving links',
+      ]}
+    >
       <div className="ruled-list">
         {socialLinks.map((link) => (
           <div key={link.label} className="ruled-row" style={{ justifyContent: 'space-between' }}>
