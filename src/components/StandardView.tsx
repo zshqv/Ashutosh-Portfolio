@@ -81,21 +81,11 @@ export function StandardView() {
 
         <section id="resume" className="standard__section" aria-labelledby="std-resume">
           <h2 className="standard__section-title" id="std-resume">Resume</h2>
-          <h3 className="mono-label" style={{ marginBottom: 8 }}>Experience</h3>
-          {resumeData.experience.map((e) => (
-            <div key={e.title} className="standard__timeline-entry">
-              <span className="mono-label">{e.period}</span>
-              <strong>{e.title}</strong> at {e.organisation} &mdash; {e.description}
-            </div>
-          ))}
-          <h3 className="mono-label" style={{ margin: '16px 0 8px' }}>Education</h3>
-          {resumeData.education.map((e) => (
-            <div key={e.degree} className="standard__timeline-entry">
-              <span className="mono-label">{e.period}</span>
-              <strong>{e.degree}</strong>, {e.institution} &mdash; {e.details}
-            </div>
-          ))}
-          <p className="mono-label" style={{ marginTop: 12 }}>{resumeData.cvNote}</p>
+          {resumeData.cvLink && (
+            <a href={resumeData.cvLink} target="_blank" rel="noopener" className="mono-label" style={{ padding: '5px 14px', border: '1px solid var(--ink)', fontSize: 11 }}>
+              Download CV &darr;
+            </a>
+          )}
         </section>
 
         <section id="contact" className="standard__section" aria-labelledby="std-contact">
