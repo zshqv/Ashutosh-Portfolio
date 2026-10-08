@@ -4,17 +4,7 @@ import './SkillsPage.css';
 
 export function SkillsPage() {
   return (
-    <SectionLayout
-      index="02"
-      title="Skills"
-      lede="Analytical and technical capabilities."
-      loaderItems={[
-        'Loading IB & advisory',
-        'Loading quant & risk',
-        'Loading fintech & AI',
-        'Loading tools & platforms',
-      ]}
-    >
+    <SectionLayout index="02" title="Skills" lede="Analytical and technical capabilities.">
       <div className="skills-grid">
         {skillGroups.map((group) => (
           <div key={group.title} className="skills-group">

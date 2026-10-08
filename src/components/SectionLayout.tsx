@@ -1,24 +1,21 @@
-import { useCallback, useRef, useEffect, useState } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../contexts/AppContext';
 import { useKeyboard } from '../hooks/useKeyboard';
 import { ShutterTransition } from './ShutterTransition';
-import { SectionLoader } from './SectionLoader';
 import './SectionLayout.css';
 
 interface SectionLayoutProps {
   index: string;
   title: string;
   lede: string;
-  loaderItems?: string[];
   children: React.ReactNode;
 }
 
-export function SectionLayout({ index, title, lede, loaderItems, children }: SectionLayoutProps) {
+export function SectionLayout({ index, title, lede, children }: SectionLayoutProps) {
   const navigate = useNavigate();
   const { playBack, transitioning, setTransitioning } = useApp();
   const pendingBack = useRef(false);
-  const [loaded, setLoaded] = useState(!loaderItems || loaderItems.length === 0);
 
   const goBack = useCallback(() => {
     if (transitioning) return;
@@ -53,10 +50,6 @@ export function SectionLayout({ index, title, lede, loaderItems, children }: Sec
     backRef.current?.focus({ preventScroll: true });
   }, []);
 
-  const handleLoaderComplete = useCallback(() => {
-    setLoaded(true);
-  }, []);
-
   return (
     <>
       <main className="section">
@@ -68,24 +61,15 @@ export function SectionLayout({ index, title, lede, loaderItems, children }: Sec
           <span className="section__sample-tag mono-label">Sample entries</span>
         </div>
 
-        {!loaded && loaderItems ? (
-          <div className="section__loader-wrap">
-            <SectionLoader items={loaderItems} onComplete={handleLoaderComplete} />
+        <section className="section__body" aria-labelledby={headingId}>
+          <div className="section__left">
+            <h2 className="section__title" id={headingId}>{title}</h2>
+            <p className="section__lede">{lede}</p>
           </div>
-        ) : (
-          <section
-            className={`section__body ${loaded ? 'section__body--entered' : ''}`}
-            aria-labelledby={headingId}
-          >
-            <div className="section__left">
-              <h2 className="section__title" id={headingId}>{title}</h2>
-              <p className="section__lede">{lede}</p>
-            </div>
-            <div className="section__right">
-              {children}
-            </div>
-          </section>
-        )}
+          <div className="section__right">
+            {children}
+          </div>
+        </section>
       </main>
 
       {transitioning && (
