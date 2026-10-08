@@ -208,6 +208,16 @@ export function ProjectsPage() {
                       <div className="projects-table__name">
                         <strong>{p.name}</strong>
                         <span className="projects-table__desc">{p.description}</span>
+                        {p.pdfLink && (
+                          <a
+                            href={p.pdfLink}
+                            target="_blank"
+                            rel="noopener"
+                            className="projects-table__pdf mono-label"
+                          >
+                            Read PDF &#8599;
+                          </a>
+                        )}
                       </div>
                       <span className="projects-table__cell">{p.area}</span>
                       <span className="projects-table__cell">{p.tools}</span>

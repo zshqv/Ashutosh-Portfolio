@@ -4,6 +4,7 @@ export interface Project {
   area: string;
   tools: string;
   year: string;
+  pdfLink?: string;
 }
 
 export interface ProjectCategory {
@@ -86,11 +87,12 @@ export const projectCategories: ProjectCategory[] = [
     label: 'Research Papers',
     projects: [
       {
-        name: 'Sentiment-Driven Alpha in Indian Mid-Caps',
-        description: 'Study testing whether NLP-derived sentiment scores from earnings calls predict abnormal returns.',
-        area: 'Empirical Finance',
-        tools: 'Python, statsmodels',
+        name: 'Zombie Banks and Japan’s Lost Decade',
+        description: 'Argues that Japan’s decade-long stagnation was driven not by the bubble collapse itself, but by banks hiding bad debt and regulators tolerating zombie lending—delaying loss recognition that misdirected capital economy-wide. A comparative analysis with the 2008 GFC shows faster disclosure and recapitalisation produced far shorter crises.',
+        area: 'Banking & Macro',
+        tools: 'Qualitative case study',
         year: '2025',
+        pdfLink: '/papers/Zombie_Banks_and_Japans_Lost_Decade.pdf',
       },
       {
         name: 'Credit Spread Determinants — Emerging Markets',

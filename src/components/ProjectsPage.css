@@ -176,6 +176,20 @@
   color: var(--ink-soft);
 }
 
+.projects-table__pdf {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--ink);
+  font-size: 10px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.projects-table__pdf:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 /* RESPONSIVE */
 @media (max-width: 820px) {
   .projects-menu__body {
