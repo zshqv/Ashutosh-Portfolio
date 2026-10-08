@@ -1,5 +1,5 @@
 import { siteData } from '../data/site';
-import { projects } from '../data/projects';
+import { projectCategories } from '../data/projects';
 import { skillGroups } from '../data/skills';
 import { resumeData } from '../data/experience';
 import { contactInfo, socialLinks } from '../data/socials';
@@ -48,10 +48,15 @@ export function StandardView() {
 
         <section id="projects" className="standard__section" aria-labelledby="std-projects">
           <h2 className="standard__section-title" id="std-projects">Projects</h2>
-          {projects.map((p) => (
-            <div key={p.name} className="standard__project">
-              <strong>{p.name}</strong> &mdash; {p.description}
-              <span className="mono-label" style={{ marginLeft: 8 }}>{p.area} / {p.tools} / {p.year}</span>
+          {projectCategories.map((cat) => (
+            <div key={cat.id} style={{ marginBottom: 20 }}>
+              <h3 className="mono-label" style={{ marginBottom: 8 }}>{cat.label}</h3>
+              {cat.projects.map((p) => (
+                <div key={p.name} className="standard__project">
+                  <strong>{p.name}</strong> &mdash; {p.description}
+                  <span className="mono-label" style={{ marginLeft: 8 }}>{p.area} / {p.tools} / {p.year}</span>
+                </div>
+              ))}
             </div>
           ))}
         </section>

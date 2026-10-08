@@ -13,8 +13,8 @@ export interface ContactInfo {
 export const contactInfo: ContactInfo = {
   email: 'hello@example.com',
   linkedin: {
-    label: 'linkedin.com/in/ashutosh-tripathi',
-    url: 'https://linkedin.com/in/ashutosh-tripathi',
+    label: 'linkedin.com/in/ashutoshtripathi10',
+    url: 'https://www.linkedin.com/in/ashutoshtripathi10/',
   },
   location: 'India',
 };
@@ -23,10 +23,10 @@ export const contactInfo: ContactInfo = {
 export const socialLinks: SocialLink[] = [
   {
     label: 'LinkedIn',
-    url: 'https://linkedin.com/in/ashutosh-tripathi',
+    url: 'https://www.linkedin.com/in/ashutoshtripathi10/',
   },
   {
     label: 'GitHub',
-    url: 'https://github.com/ashutosh-tripathi',
+    url: 'https://github.com/zshqv',
   },
 ];
