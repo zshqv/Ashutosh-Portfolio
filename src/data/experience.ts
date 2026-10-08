@@ -20,30 +20,35 @@ export interface ResumeData {
   cvLink: string | null;
 }
 
-// PLACEHOLDER
 export const resumeData: ResumeData = {
   experience: [
     {
-      title: 'Financial Analyst',
-      organisation: 'Placeholder Corp.',
-      period: '2024 – Present',
-      description: 'Equity research coverage and financial modelling for mid-cap industrials.',
+      title: 'Growth Associate',
+      organisation: 'Stealth Startup, Mumbai',
+      period: 'Apr 2026 – May 2026',
+      description: 'Built outbound sales infrastructure in 48 hours; ran 70+ B2B cold calls daily; onboarded a new hire to full productivity within the same sprint.',
     },
     {
-      title: 'Research Intern',
-      organisation: 'Placeholder Capital',
-      period: '2023 – 2024',
-      description: 'Supported senior analysts with industry research, data collection, and model updates.',
+      title: 'Operations Intern',
+      organisation: 'Stealth AI Startup, Mumbai',
+      period: 'Sep 2025 – Apr 2026',
+      description: 'Worked directly with the CEO on execution. Owned end-to-end product testing pre-launch and fed practical input into the tech team each build cycle.',
+    },
+    {
+      title: 'Business Development Executive',
+      organisation: 'Content Whale, Mumbai',
+      period: 'Jun 2025 – Sep 2025',
+      description: 'Beat monthly meeting targets by 34%. Managed full sales cycle from prospecting to closure with tailored client proposals.',
     },
   ],
   education: [
     {
-      degree: 'B.Com (Hons) Finance',
-      institution: 'Placeholder University',
-      period: '2020 – 2023',
-      details: 'Specialisation in corporate finance and financial markets.',
+      degree: 'B.Com, Accounting and Finance',
+      institution: "St. Xavier's College, Mumbai",
+      period: '2022 – 2025',
+      details: '',
     },
   ],
-  cvNote: 'A full CV is available on request.',
-  cvLink: null,
+  cvNote: 'Download the full resume below.',
+  cvLink: '/resume/portfolio_resume.pdf',
 };
