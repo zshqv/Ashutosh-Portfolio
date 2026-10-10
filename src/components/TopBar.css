@@ -68,12 +68,26 @@
   }
 }
 
+@media (max-width: 480px) {
+  .top-bar {
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    padding: 8px var(--gutter);
+  }
+}
+
 @media (max-width: 420px) {
   .top-bar__right {
     gap: 4px;
   }
   .top-bar__btn {
     padding: 4px 8px;
+    font-size: 10px;
+  }
+  .top-bar__logo {
+    width: 24px;
+    height: 24px;
     font-size: 10px;
   }
 }

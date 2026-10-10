@@ -36,3 +36,12 @@
     font-size: 9px;
   }
 }
+
+@media (max-width: 480px) {
+  .site-footer {
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    padding: 8px var(--gutter);
+  }
+}
