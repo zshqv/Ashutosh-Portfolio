@@ -3,12 +3,13 @@ import { projectCategories } from '../data/projects';
 import { skillGroups } from '../data/skills';
 import { resumeData } from '../data/experience';
 import { contactInfo, socialLinks } from '../data/socials';
-import { useApp } from '../contexts/AppContext';
+import { ThemeToggle } from './ThemeToggle';
+
 import { useState } from 'react';
 import './StandardView.css';
 
 export function StandardView() {
-  const { theme, toggleTheme } = useApp();
+
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -34,9 +35,7 @@ export function StandardView() {
           <a href="#contact" className="mono-label">Contact</a>
           <a href="#socials" className="mono-label">Socials</a>
         </nav>
-        <button className="top-bar__btn mono-label" onClick={toggleTheme}>
-          {theme === 'light' ? 'Dark' : 'Light'}
-        </button>
+        <ThemeToggle />
       </header>
 
       <main className="standard__main">
