@@ -6,6 +6,7 @@ import { useApp } from '../contexts/AppContext';
 import { ScrambleText } from './ScrambleText';
 import { Reticle } from './Reticle';
 import { ShutterTransition } from './ShutterTransition';
+import { DottedGlobe } from './DottedGlobe';
 import './HomeScreen.css';
 
 const MENU_ITEMS = [
@@ -115,27 +116,7 @@ export function HomeScreen({ entered }: HomeScreenProps) {
               )}
             </span>
           </h1>
-          <div className="home__role-tag">{siteData.role}</div>
-          <p className="home__tagline">{siteData.tagline}</p>
-          <div className="home__location mono-label">
-            Loc. {siteData.location} &middot; {siteData.timezoneLabel}
-          </div>
-
-          <div className="home__chart">
-            <svg viewBox="0 0 200 60" className="home__chart-svg" aria-hidden="true">
-              <polyline
-                points="0,50 30,42 60,45 90,28 120,32 150,18 180,22 200,10"
-                fill="none"
-                stroke="var(--ink)"
-                strokeWidth="1.2"
-                className="home__chart-line"
-              />
-              <circle cx="200" cy="10" r="2.5" fill="var(--ink)" className="home__chart-dot" />
-            </svg>
-            <span className="mono-label home__chart-caption">
-              Illustrative trend. Not market data.
-            </span>
-          </div>
+          <DottedGlobe size={240} />
         </div>
 
         <nav className="home__right" aria-label="Main navigation">
