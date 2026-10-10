@@ -111,6 +111,13 @@ img {
   outline-offset: 2px;
 }
 
+/* Tighten inset frame on mobile */
+@media (max-width: 480px) {
+  body::before {
+    inset: 4px;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

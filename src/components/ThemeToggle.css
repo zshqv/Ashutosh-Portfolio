@@ -169,3 +169,9 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+@media (max-width: 480px) {
+  .theme-switch {
+    --toggle-size: 12px;
+  }
+}
