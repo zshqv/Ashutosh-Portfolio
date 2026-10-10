@@ -5,6 +5,7 @@ export interface Project {
   tools: string;
   year: string;
   fileLink?: string;
+  repoLink?: string;
 }
 
 export interface ProjectCategory {
@@ -13,7 +14,6 @@ export interface ProjectCategory {
   projects: Project[];
 }
 
-// PLACEHOLDER
 export const projectCategories: ProjectCategory[] = [
   {
     id: 'financial-models',
@@ -42,18 +42,44 @@ export const projectCategories: ProjectCategory[] = [
     label: 'Open Source',
     projects: [
       {
-        name: 'finkit',
-        description: 'Python library for rapid financial statement analysis — ratio computation, peer comparison, and charting.',
-        area: 'Tooling',
-        tools: 'Python, pandas',
-        year: '2025',
+        name: 'Trikosh',
+        description: 'Financial research platform for students and aspiring analysts. Organises five years of statements, pre-computed ratios, and peer comparisons for 200 companies across six sectors. Live at trikosh.xyz.',
+        area: 'Platform',
+        tools: 'Next.js, FastAPI, PostgreSQL',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/Trikosh',
       },
       {
-        name: 'marketsync',
-        description: 'Lightweight data pipeline pulling live and historical market data into a local SQLite store.',
-        area: 'Data Engineering',
-        tools: 'Python, SQLite',
-        year: '2024',
+        name: 'BriefOS',
+        description: 'One-click company research brief generator. Takes a stock ticker and produces a structured PDF with valuation, profitability, financial statements, and auto-detected flags like elevated P/E or strong ROE.',
+        area: 'Analyst Tooling',
+        tools: 'Python, yfinance, fpdf2',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/BriefOS',
+      },
+      {
+        name: 'PitchOS',
+        description: 'Automated M&A rationale generator. Takes two tickers (acquirer and target) and outputs a one-page PDF deal brief with EV/EBITDA valuation, a five-year DCF, deal rationale, and automated risk flags.',
+        area: 'Analyst Tooling',
+        tools: 'Python, yfinance',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/PitchOS',
+      },
+      {
+        name: 'RedFlag',
+        description: 'Flags risk anomalies in SEC filings that the human eye misses. Pulls 10-K reports from EDGAR, scans for risk language across legal, financial, operational, and regulatory categories, and compares year-over-year trends.',
+        area: 'Risk Analytics',
+        tools: 'Python, BeautifulSoup, TextBlob',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/RedFlag',
+      },
+      {
+        name: 'Insider',
+        description: 'Inbound career intelligence engine and pipeline CRM. Aggregates career opportunities and manages them through a structured pipeline.',
+        area: 'Career Tools',
+        tools: 'Python',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/Insider',
       },
     ],
   },
@@ -62,18 +88,28 @@ export const projectCategories: ProjectCategory[] = [
     label: 'Claude Skills',
     projects: [
       {
-        name: 'Equity Research Draft Generator',
-        description: 'Claude skill that drafts structured equity research notes from raw financial data and earnings transcripts.',
-        area: 'AI / Finance',
-        tools: 'Claude API, TypeScript',
+        name: 'Socrates',
+        description: 'A diagnostic-first adaptive learning skill for Claude. It assesses what you already know through a short diagnostic conversation, then builds a tailored curriculum with constrained case studies and self-reflective feedback loops.',
+        area: 'AI / Education',
+        tools: 'Claude Code Skills',
         year: '2026',
+        repoLink: 'https://github.com/zshqv/socrates',
       },
       {
-        name: 'Financial Document Parser',
-        description: 'Skill extracting key metrics, risk factors, and guidance from 10-K and 10-Q filings.',
-        area: 'AI / NLP',
-        tools: 'Claude API, Python',
+        name: 'Practitioner Finance Skills',
+        description: 'Pulls Claude out of the classroom and into the deal room. Includes deal-read for assessing entry price, capital structure stress, and red flags, and three-statement-intuition for teaching the logic behind financial statements before the mechanics.',
+        area: 'AI / Finance',
+        tools: 'Claude Code Skills',
         year: '2026',
+        repoLink: 'https://github.com/zshqv/practitioner-finance-skills',
+      },
+      {
+        name: 'Wall Street Format',
+        description: 'Applies investment banking and private equity formatting conventions to Excel models and PowerPoint pitchbooks. Handles standard color coding for inputs, formulas, and links, banking-style number formats, and action-titled slide structures.',
+        area: 'AI / Finance',
+        tools: 'Claude Code Skills, Python',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/wall-street-format',
       },
     ],
   },
@@ -91,7 +127,7 @@ export const projectCategories: ProjectCategory[] = [
       },
       {
         name: 'When the Licence Becomes the Liability: IP Inversion in Licensing',
-        description: 'Proposes the "inversion thesis" — licensing relationships structurally flip when a licensee’s operational investment creates ecosystem value exceeding the licensor’s brand. Examines EA/FIFA, Disney/Netflix, and Sony’s first-party model, then offers a four-part M&A due diligence framework for licence-dependent assets.',
+        description: 'Proposes the “inversion thesis” — licensing relationships structurally flip when a licensee’s operational investment creates ecosystem value exceeding the licensor’s brand. Examines EA/FIFA, Disney/Netflix, and Sony’s first-party model, then offers a four-part M&A due diligence framework for licence-dependent assets.',
         area: 'IP & M&A Strategy',
         tools: 'Qualitative case study',
         year: '2026',
@@ -104,25 +140,12 @@ export const projectCategories: ProjectCategory[] = [
     label: 'Quantitative Research',
     projects: [
       {
-        name: 'Momentum Factor — NSE Universe',
-        description: 'Backtested cross-sectional momentum strategy on NSE 500 with transaction cost and slippage modelling.',
-        area: 'Quant Strategy',
-        tools: 'Python, NumPy',
-        year: '2025',
-      },
-      {
-        name: 'Portfolio Risk Dashboard',
-        description: 'Interactive dashboard computing VaR, Sharpe ratio, and drawdown analysis across asset classes.',
-        area: 'Risk Analytics',
-        tools: 'Python, Streamlit',
-        year: '2024',
-      },
-      {
-        name: 'Credit Default Classifier',
-        description: 'Machine learning model predicting probability of default using financial ratios and macro indicators.',
-        area: 'Credit Risk',
-        tools: 'Python, scikit-learn',
-        year: '2025',
+        name: 'Retirement Monte Carlo Simulator',
+        description: 'Tests whether the 4% retirement rule holds for a $1M all-stock portfolio over 30 years. Compares historical 30-year windows from Shiller\'s 1871–2012 real return data against multiple simulation methods to show that return clustering materially affects survival rates.',
+        area: 'Simulation & Risk',
+        tools: 'Python, NumPy, Matplotlib',
+        year: '2026',
+        repoLink: 'https://github.com/zshqv/Retirement-Monte-Carlo-Simulator',
       },
     ],
   },
