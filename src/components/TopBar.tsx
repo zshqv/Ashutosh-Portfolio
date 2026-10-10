@@ -1,11 +1,13 @@
 import { siteData } from '../data/site';
 import { useClock } from '../hooks/useClock';
 import { useApp } from '../contexts/AppContext';
+import { ThemeToggle } from './ThemeToggle';
+
 import './TopBar.css';
 
 export function TopBar() {
   const time = useClock();
-  const { soundOn, toggleSound, theme, toggleTheme } = useApp();
+  const { soundOn, toggleSound } = useApp();
 
   return (
     <header className="top-bar">
@@ -21,13 +23,7 @@ export function TopBar() {
       </div>
 
       <div className="top-bar__right">
-        <button
-          className="top-bar__btn mono-label"
-          onClick={toggleTheme}
-          aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-        >
-          {theme === 'light' ? 'Dark' : 'Light'}
-        </button>
+        <ThemeToggle />
         <button
           className="top-bar__btn mono-label"
           onClick={toggleSound}
