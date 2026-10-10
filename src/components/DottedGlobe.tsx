@@ -218,7 +218,35 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
       document.addEventListener('mouseup', handleMouseUp);
     };
 
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.touches.length !== 1) return;
+      autoRotate = false;
+      const touch = event.touches[0];
+      const startX = touch.clientX;
+      const startY = touch.clientY;
+      const startRotation: [number, number] = [...rotation];
+
+      const handleTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+        const t = e.touches[0];
+        rotation[0] = startRotation[0] + (t.clientX - startX) * 0.5;
+        rotation[1] = Math.max(-90, Math.min(90, startRotation[1] - (t.clientY - startY) * 0.5));
+        projection.rotate(rotation);
+        render();
+      };
+
+      const handleTouchEnd = () => {
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+        setTimeout(() => { autoRotate = true; }, 10);
+      };
+
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
+    };
+
     canvas.addEventListener('mousedown', handleMouseDown);
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
     loadWorldData();
 
     const observer = new MutationObserver(() => render());
@@ -227,6 +255,7 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
     return () => {
       rotationTimer.stop();
       canvas.removeEventListener('mousedown', handleMouseDown);
+      canvas.removeEventListener('touchstart', handleTouchStart);
       observer.disconnect();
     };
   }, [size]);
