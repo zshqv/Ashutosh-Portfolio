@@ -22,7 +22,7 @@
 }
 
 .projects-menu__header-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -52,7 +52,7 @@
 }
 
 .projects-menu__label {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
