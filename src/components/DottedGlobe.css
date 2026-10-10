@@ -1,0 +1,36 @@
+.dotted-globe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dotted-globe__wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.dotted-globe__canvas {
+  display: block;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+.dotted-globe__canvas:active {
+  cursor: grabbing;
+}
+
+
+.dotted-globe__label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .dotted-globe__canvas {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
