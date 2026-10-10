@@ -205,6 +205,10 @@
   .projects-menu__count {
     display: none;
   }
+
+  .projects-menu__label {
+    font-size: clamp(16px, 4vw, 22px);
+  }
 }
 
 @media (max-width: 680px) {
@@ -215,6 +219,31 @@
   .projects-table__row {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-menu__row {
+    height: 44px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .projects-menu__label {
+    font-size: clamp(14px, 4.5vw, 20px);
+    letter-spacing: 0.12em;
+  }
+
+  .projects-table__name strong {
+    font-size: 14px;
+  }
+
+  .projects-table__desc {
+    font-size: 12px;
+  }
+
+  .projects-table__cell {
+    font-size: 12px;
   }
 }
 

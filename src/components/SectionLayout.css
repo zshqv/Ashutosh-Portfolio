@@ -95,4 +95,28 @@
     gap: 8px;
   }
 
+  .section {
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .section__title {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-top: 52px;
+    padding-bottom: 32px;
+  }
+
+  .section__title {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 8px;
+  }
+
+  .section__lede {
+    font-size: 13px;
+  }
 }
