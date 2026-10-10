@@ -45,9 +45,9 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
       .clipAngle(90);
 
     const path = d3.geoPath().projection(projection).context(context);
-
-    // cache graticule
     const graticule = d3.geoGraticule()();
+    const TWO_PI = 2 * Math.PI;
+    const PI_HALF = Math.PI / 2;
 
     const pointInPolygon = (point: [number, number], polygon: number[][]): boolean => {
       const [x, y] = point;
@@ -84,18 +84,10 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
       return false;
     };
 
-    interface DotData {
-      lng: number;
-      lat: number;
-      bright: number; // pre-computed 0-1
-    }
-
-    const allDots: DotData[] = [];
+    const allDots: [number, number][] = [];
     let landFeatures: any;
 
     const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
-    const PI_HALF = Math.PI / 2;
-    const TWO_PI = 2 * Math.PI;
 
     const render = () => {
       context.clearRect(0, 0, containerSize, containerSize);
@@ -103,107 +95,42 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
       const scaleFactor = currentScale / radius;
       const dark = isDark();
 
-      if (dark) {
-        // --- NIGHT MODE ---
-        context.beginPath();
-        context.arc(cx, cy, currentScale, 0, TWO_PI);
-        context.fillStyle = '#0a0a12';
-        context.fill();
-        context.strokeStyle = 'rgba(100, 140, 255, 0.15)';
-        context.lineWidth = 1 * scaleFactor;
-        context.stroke();
+      const oceanColor = dark ? '#1a1a1e' : 'rgba(56, 54, 44, 0.04)';
+      const borderColor = dark ? 'rgba(212, 208, 188, 0.2)' : 'rgba(56, 54, 44, 0.15)';
+      const gratColor = dark ? 'rgba(212, 208, 188, 0.06)' : 'rgba(56, 54, 44, 0.06)';
+      const dotColor = dark ? 'rgba(212, 208, 188, 0.5)' : 'rgba(56, 54, 44, 0.35)';
 
-        // atmospheric glow
-        const atmo = context.createRadialGradient(cx, cy, currentScale * 0.95, cx, cy, currentScale * 1.08);
-        atmo.addColorStop(0, 'rgba(80, 130, 255, 0)');
-        atmo.addColorStop(0.7, 'rgba(80, 130, 255, 0.06)');
-        atmo.addColorStop(1, 'rgba(80, 130, 255, 0)');
-        context.beginPath();
-        context.arc(cx, cy, currentScale * 1.08, 0, TWO_PI);
-        context.fillStyle = atmo;
-        context.fill();
+      // ocean
+      context.beginPath();
+      context.arc(cx, cy, currentScale, 0, TWO_PI);
+      context.fillStyle = oceanColor;
+      context.fill();
+      context.strokeStyle = borderColor;
+      context.lineWidth = 1 * scaleFactor;
+      context.stroke();
 
-        if (landFeatures) {
-          context.beginPath();
-          path(graticule);
-          context.strokeStyle = 'rgba(60, 80, 140, 0.1)';
-          context.lineWidth = 0.4 * scaleFactor;
-          context.stroke();
-
-          context.beginPath();
-          landFeatures.features.forEach((feature: any) => { path(feature); });
-          context.strokeStyle = 'rgba(80, 100, 160, 0.25)';
-          context.lineWidth = 0.5 * scaleFactor;
-          context.stroke();
-
-          // city lights — two batched passes (glow + core)
-          context.fillStyle = 'rgba(255, 200, 80, 0.08)';
-          context.beginPath();
-          for (const dot of allDots) {
-            const projected = projection([dot.lng, dot.lat]);
-            if (projected) {
-              const r = Math.max(0.5, (0.8 + dot.bright * 1.2) * scaleFactor * 2);
-              context.moveTo(projected[0] + r, projected[1]);
-              context.arc(projected[0], projected[1], r, 0, TWO_PI);
-            }
-          }
-          context.fill();
-
-          context.fillStyle = 'rgba(255, 220, 120, 0.7)';
-          context.beginPath();
-          for (const dot of allDots) {
-            const projected = projection([dot.lng, dot.lat]);
-            if (projected) {
-              const r = Math.max(0.3, (0.5 + dot.bright * 0.6) * scaleFactor);
-              context.moveTo(projected[0] + r, projected[1]);
-              context.arc(projected[0], projected[1], r, 0, TWO_PI);
-            }
-          }
-          context.fill();
-        }
-      } else {
-        // --- DAY MODE ---
-        context.beginPath();
-        context.arc(cx, cy, currentScale, 0, TWO_PI);
-        context.fillStyle = '#1a3a5c';
-        context.fill();
-        context.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-        context.lineWidth = 1.5 * scaleFactor;
-        context.stroke();
-
-        if (landFeatures) {
-          context.beginPath();
-          path(graticule);
-          context.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-          context.lineWidth = 0.4 * scaleFactor;
-          context.stroke();
-
-          // filled land
-          context.beginPath();
-          landFeatures.features.forEach((feature: any) => { path(feature); });
-          context.fillStyle = '#3a7a4f';
-          context.fill();
-          context.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-          context.lineWidth = 0.6 * scaleFactor;
-          context.stroke();
-
-          // terrain dots — single batched path
-          const dotR = 0.8 * scaleFactor;
-          context.fillStyle = 'rgba(80, 160, 90, 0.5)';
-          context.beginPath();
-          for (const dot of allDots) {
-            const projected = projection([dot.lng, dot.lat]);
-            if (projected) {
-              context.moveTo(projected[0] + dotR, projected[1]);
-              context.arc(projected[0], projected[1], dotR, 0, TWO_PI);
-            }
-          }
-          context.fill();
-        }
-      }
-
-      // Mumbai marker
       if (landFeatures) {
+        // graticule
+        context.beginPath();
+        path(graticule);
+        context.strokeStyle = gratColor;
+        context.lineWidth = 0.4 * scaleFactor;
+        context.stroke();
+
+        // land dots — single batched path
+        const dotR = Math.max(0.5, 1 * scaleFactor);
+        context.fillStyle = dotColor;
+        context.beginPath();
+        for (const dot of allDots) {
+          const projected = projection(dot);
+          if (projected) {
+            context.moveTo(projected[0] + dotR, projected[1]);
+            context.arc(projected[0], projected[1], dotR, 0, TWO_PI);
+          }
+        }
+        context.fill();
+
+        // Mumbai marker
         const mumbai: [number, number] = [72.8777, 19.076];
         const rot = projection.rotate();
         const dist = d3.geoDistance(mumbai, [-rot[0], -rot[1]]);
@@ -245,17 +172,11 @@ export function DottedGlobe({ size = 280 }: DottedGlobeProps) {
         landFeatures.features.forEach((feature: any) => {
           const bounds = d3.geoBounds(feature);
           const [[minLng, minLat], [maxLng, maxLat]] = bounds;
-          const step = 2; // ~2 degree steps — much fewer dots, still looks good at 280px
+          const step = 2;
           for (let lng = minLng; lng <= maxLng; lng += step) {
             for (let lat = minLat; lat <= maxLat; lat += step) {
               const point: [number, number] = [lng, lat];
-              if (pointInFeature(point, feature)) {
-                allDots.push({
-                  lng,
-                  lat,
-                  bright: ((lng * 13 + lat * 7) % 3) / 3,
-                });
-              }
+              if (pointInFeature(point, feature)) allDots.push(point);
             }
           }
         });
