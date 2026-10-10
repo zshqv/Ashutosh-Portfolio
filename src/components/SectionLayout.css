@@ -26,12 +26,6 @@
   color: var(--paper);
 }
 
-.section__sample-tag {
-  padding: 3px 10px;
-  border: 1px solid var(--line);
-  font-size: 10px;
-  margin-left: auto;
-}
 
 .section__body {
   display: grid;
@@ -101,7 +95,4 @@
     gap: 8px;
   }
 
-  .section__sample-tag {
-    margin-left: 0;
-  }
 }

@@ -132,7 +132,6 @@ export function ProjectsPage() {
               ? `01 / Projects / ${activeCat!.label}`
               : '01 / Projects'}
           </span>
-          <span className="section__sample-tag mono-label">Sample entries</span>
         </div>
 
         {openCategory === null ? (
@@ -216,6 +215,16 @@ export function ProjectsPage() {
                             className="projects-table__pdf mono-label"
                           >
                             {p.fileLink.endsWith('.pdf') ? 'Read PDF' : 'Download'} &#8599;
+                          </a>
+                        )}
+                        {p.repoLink && (
+                          <a
+                            href={p.repoLink}
+                            target="_blank"
+                            rel="noopener"
+                            className="projects-table__pdf mono-label"
+                          >
+                            GitHub &#8599;
                           </a>
                         )}
                       </div>

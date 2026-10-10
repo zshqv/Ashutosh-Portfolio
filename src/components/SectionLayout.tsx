@@ -58,7 +58,6 @@ export function SectionLayout({ index, title, lede, children }: SectionLayoutPro
             &#9664; Index
           </button>
           <span className="mono-label">{index} / {title}</span>
-          <span className="section__sample-tag mono-label">Sample entries</span>
         </div>
 
         <section className="section__body" aria-labelledby={headingId}>
