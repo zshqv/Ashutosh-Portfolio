@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { siteData } from '../data/site';
 import { useKeyboard } from '../hooks/useKeyboard';
@@ -90,6 +90,15 @@ export function HomeScreen({ entered }: HomeScreenProps) {
     menuRefs.current[selected]?.focus({ preventScroll: true });
   }, [selected]);
 
+  const [winWidth, setWinWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const onResize = () => setWinWidth(window.innerWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  const globeSize = useMemo(() => winWidth <= 480 ? 160 : winWidth <= 820 ? 200 : 240, [winWidth]);
+  const isMobile = winWidth <= 820;
+
   return (
     <>
       <main className="home">
@@ -116,7 +125,7 @@ export function HomeScreen({ entered }: HomeScreenProps) {
               )}
             </span>
           </h1>
-          <DottedGlobe size={240} />
+          <DottedGlobe size={globeSize} />
         </div>
 
         <nav className="home__right" aria-label="Main navigation">
@@ -154,13 +163,15 @@ export function HomeScreen({ entered }: HomeScreenProps) {
             ))}
             <div
               className="home__menu-marker"
-              style={{ transform: `translateY(${selected * 52}px)` }}
+              style={{ transform: `translateY(${selected * (isMobile ? 44 : 52)}px)` }}
               aria-hidden="true"
             />
           </div>
-          <div className="home__hint mono-label">
-            Arrow keys navigate &middot; Enter selects &middot; Esc returns
-          </div>
+          {!isMobile && (
+            <div className="home__hint mono-label">
+              Arrow keys navigate &middot; Enter selects &middot; Esc returns
+            </div>
+          )}
         </nav>
       </main>
 
