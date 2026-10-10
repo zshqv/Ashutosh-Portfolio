@@ -29,4 +29,8 @@ export const socialLinks: SocialLink[] = [
     label: 'GitHub',
     url: 'https://github.com/zshqv',
   },
+  {
+    label: 'Email',
+    url: 'mailto:ashu10tripathi@gmail.com',
+  },
 ];
