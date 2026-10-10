@@ -5,7 +5,7 @@ import './TopBar.css';
 
 export function TopBar() {
   const time = useClock();
-  const { soundOn, toggleSound, standardView, toggleStandardView } = useApp();
+  const { soundOn, toggleSound, theme, toggleTheme } = useApp();
 
   return (
     <header className="top-bar">
@@ -23,17 +23,17 @@ export function TopBar() {
       <div className="top-bar__right">
         <button
           className="top-bar__btn mono-label"
+          onClick={toggleTheme}
+          aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
+          {theme === 'light' ? 'Dark' : 'Light'}
+        </button>
+        <button
+          className="top-bar__btn mono-label"
           onClick={toggleSound}
           aria-label={soundOn ? 'Turn sound off' : 'Turn sound on'}
         >
           Sound {soundOn ? 'on' : 'off'}
-        </button>
-        <button
-          className="top-bar__btn mono-label"
-          onClick={toggleStandardView}
-          aria-label={standardView ? 'Switch to NieR view' : 'Switch to standard view'}
-        >
-          {standardView ? 'NieR view' : 'Standard view'}
         </button>
       </div>
     </header>

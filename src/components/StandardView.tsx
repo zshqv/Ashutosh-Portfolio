@@ -8,7 +8,7 @@ import { useState } from 'react';
 import './StandardView.css';
 
 export function StandardView() {
-  const { toggleStandardView } = useApp();
+  const { theme, toggleTheme } = useApp();
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -34,8 +34,8 @@ export function StandardView() {
           <a href="#contact" className="mono-label">Contact</a>
           <a href="#socials" className="mono-label">Socials</a>
         </nav>
-        <button className="top-bar__btn mono-label" onClick={toggleStandardView}>
-          NieR view
+        <button className="top-bar__btn mono-label" onClick={toggleTheme}>
+          {theme === 'light' ? 'Dark' : 'Light'}
         </button>
       </header>
 
@@ -55,6 +55,11 @@ export function StandardView() {
                 <div key={p.name} className="standard__project">
                   <strong>{p.name}</strong> &mdash; {p.description}
                   <span className="mono-label" style={{ marginLeft: 8 }}>{p.area} / {p.tools} / {p.year}</span>
+                  {p.repoLink && (
+                    <a href={p.repoLink} target="_blank" rel="noopener" className="mono-label" style={{ marginLeft: 8 }}>
+                      GitHub &#8599;
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
@@ -76,7 +81,7 @@ export function StandardView() {
         <section id="about" className="standard__section" aria-labelledby="std-about">
           <h2 className="standard__section-title" id="std-about">About</h2>
           <p>I work at the intersection of finance and technology, applying quantitative methods and machine learning to problems in valuation, risk, and market analysis.</p>
-          <p style={{ marginTop: 12 }}>This portfolio draws visual inspiration from games I play. The "NieR view" button switches to the interactive version.</p>
+          <p style={{ marginTop: 12 }}>This portfolio draws visual inspiration from games I play.</p>
         </section>
 
         <section id="resume" className="standard__section" aria-labelledby="std-resume">
