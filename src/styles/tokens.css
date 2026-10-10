@@ -6,9 +6,22 @@
   --line: rgba(56, 54, 44, 0.34);
   --line-soft: rgba(56, 54, 44, 0.16);
   --ok: #5f6a41;
+  --scanline: rgba(56, 54, 44, 0.035);
 
   --font-display: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Lemon Milk', 'Jost', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
   --gutter: 16px;
+}
+
+:root[data-theme="dark"] {
+  --paper: #1a1a1e;
+  --paper-hi: #232328;
+  --ink: #d4d0bc;
+  --ink-soft: #a8a48e;
+  --line: rgba(212, 208, 188, 0.28);
+  --line-soft: rgba(212, 208, 188, 0.12);
+  --ok: #8fa85a;
+  --scanline: rgba(212, 208, 188, 0.03);
 }

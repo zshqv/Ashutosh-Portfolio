@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import { useSound } from '../hooks/useSound';
+
+type Theme = 'light' | 'dark';
 
 interface AppContextValue {
   standardView: boolean;
@@ -11,15 +13,35 @@ interface AppContextValue {
   playBack: () => void;
   transitioning: boolean;
   setTransitioning: (v: boolean) => void;
+  theme: Theme;
+  toggleTheme: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
+
+function getInitialTheme(): Theme {
+  try {
+    const stored = localStorage.getItem('at-theme');
+    if (stored === 'dark' || stored === 'light') return stored;
+  } catch {}
+  return 'light';
+}
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [standardView, setStandardView] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const { tick, open, back, toggle } = useSound();
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('at-theme', theme); } catch {}
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((t) => (t === 'light' ? 'dark' : 'light'));
+  }, []);
 
   const toggleStandardView = useCallback(() => {
     setStandardView((v) => !v);
@@ -43,6 +65,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         playBack: back,
         transitioning,
         setTransitioning,
+        theme,
+        toggleTheme,
       }}
     >
       {children}
